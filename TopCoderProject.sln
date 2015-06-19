@@ -3,7 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopCoderProject", "TopCoderProject\TopCoderProject.csproj", "{76A4C321-4B73-4F77-9ADC-86662DA831E9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopCodeLibraries", "TopCoderProject\TopCodeLibraries.csproj", "{76A4C321-4B73-4F77-9ADC-86662DA831E9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01_Libraries", "01_Libraries", "{D578549B-17C2-4C99-8096-DDF7F5A86529}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02_ConsoleApps", "02_ConsoleApps", "{E2176673-8BAB-4591-8923-AF8C9ED7031E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03_WebApps", "03_WebApps", "{4C514381-25AA-41ED-8E3C-68CE181EDD64}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04_Others", "04_Others", "{DDC07A99-1583-4A68-BFD8-B661F1FCED83}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,5 +26,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{76A4C321-4B73-4F77-9ADC-86662DA831E9} = {D578549B-17C2-4C99-8096-DDF7F5A86529}
 	EndGlobalSection
 EndGlobal
