@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03_WebApps", "03_WebApps", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04_Others", "04_Others", "{DDC07A99-1583-4A68-BFD8-B661F1FCED83}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BinaryCode", "BinaryCode\BinaryCode.csproj", "{80544F75-CDC1-41E1-AC21-2F34E815FA6A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,11 +25,16 @@ Global
 		{76A4C321-4B73-4F77-9ADC-86662DA831E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{76A4C321-4B73-4F77-9ADC-86662DA831E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{76A4C321-4B73-4F77-9ADC-86662DA831E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80544F75-CDC1-41E1-AC21-2F34E815FA6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80544F75-CDC1-41E1-AC21-2F34E815FA6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80544F75-CDC1-41E1-AC21-2F34E815FA6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80544F75-CDC1-41E1-AC21-2F34E815FA6A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{76A4C321-4B73-4F77-9ADC-86662DA831E9} = {D578549B-17C2-4C99-8096-DDF7F5A86529}
+		{80544F75-CDC1-41E1-AC21-2F34E815FA6A} = {E2176673-8BAB-4591-8923-AF8C9ED7031E}
 	EndGlobalSection
 EndGlobal
