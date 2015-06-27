@@ -159,8 +159,15 @@ public class PegJumping
                 {
 
                     movePossible = false;
+                    
+                    int uCount = OrphanedPeg(b, board, newRow - 2, newCol);
+                    int dCount = OrphanedPeg(b, board, newRow + 2, newCol);
+                    int lCount = OrphanedPeg(b, board, newRow, newCol-2);
+                    int rCount = OrphanedPeg(b, board, newRow, newCol+2);
 
-                    if (isUpGood(board, newRow, newCol) && !prevLoca.Contains((newRow - 2) + ":" + newCol))
+                    int min = Math.Min(uCount, Math.Min(dCount, Math.Min(lCount, rCount)));
+
+                    if (min == uCount && isUpGood(board, newRow, newCol) && !prevLoca.Contains((newRow - 2) + ":" + newCol))
                     {
                         totalValue += b.PegType[Int32.Parse("" + board[newRow - 1][newCol])];
                         movePossible = true;
@@ -169,7 +176,7 @@ public class PegJumping
                         prevLoca.Add(newRow + ":" + newCol);
 
                     }
-                    if (isDownGood(board, newRow, newCol) && !prevLoca.Contains((newRow + 2) + ":" + newCol))
+                    else if (min == dCount && isDownGood(board, newRow, newCol) && !prevLoca.Contains((newRow + 2) + ":" + newCol))
                     {
                         totalValue += b.PegType[Int32.Parse("" + board[newRow + 1][newCol])];
                         movePossible = true;
@@ -178,7 +185,7 @@ public class PegJumping
                         prevLoca.Add(newRow + ":" + newCol);
 
                     }
-                    if (isLeftGood(board, newRow, newCol) && !prevLoca.Contains(newRow + ":" + (newCol - 2)))
+                    else if (min == lCount && isLeftGood(board, newRow, newCol) && !prevLoca.Contains(newRow + ":" + (newCol - 2)))
                     {
                         totalValue += b.PegType[Int32.Parse("" + board[newRow][newCol - 1])];
                         movePossible = true;
@@ -186,7 +193,7 @@ public class PegJumping
                         newCol = newCol - 2;
                         prevLoca.Add(newRow + ":" + newCol);
                     }
-                    if (isRightGood(board, newRow, newCol) && !prevLoca.Contains(newRow + ":" + (newCol + 2)))
+                    else if (min == rCount && isRightGood(board, newRow, newCol) && !prevLoca.Contains(newRow + ":" + (newCol + 2)))
                     {
                         totalValue += b.PegType[Int32.Parse("" + board[newRow][newCol + 1])];
                         movePossible = true;
@@ -275,7 +282,7 @@ public class PegJumping
 
                 b.AllMoves.Add(m);
             }
-            findAvailablePegs(b, board);
+            UpdateAvailablePegs(b, board);
         }
         while (goodMove != null);
         Console.Error.WriteLine("time taken is " + w.ElapsedMilliseconds);
@@ -349,7 +356,7 @@ public class PegJumping
         return output;
     }
 
-    private static void findAvailablePegs(Board b, string[] board)
+    private static void UpdateAvailablePegs(Board b, string[] board)
     {
         b.AvailablePegs = new List<Peg>();
         for (int i = 0; i < board.Length; i++)
@@ -441,7 +448,8 @@ public class PegJumping
         }
         return empty;
     }
-
+    
+    #region Other_Tries
     private static ProfitableMove ProfitableMove(Board b, string[] board, Peg p)
     {
         int rightCount = 1, leftCount = 1, upCount = 1, downCount = 1;
@@ -655,7 +663,7 @@ public class PegJumping
 
                 }
             }
-            findAvailablePegs(b, board);
+            UpdateAvailablePegs(b, board);
 
             if (watch.ElapsedMilliseconds >= 14000)
             {
@@ -738,7 +746,7 @@ public class PegJumping
                 {
                     b.AllMoves.Add(m);
                 }
-                findAvailablePegs(b, board);
+                UpdateAvailablePegs(b, board);
             }
             if (watch.ElapsedMilliseconds >= 14000)
             {
@@ -824,7 +832,7 @@ public class PegJumping
 
             }
 
-            findAvailablePegs(b, board);
+            UpdateAvailablePegs(b, board);
 
         } while (anyMoveMade);
         Console.Error.WriteLine(string.Format("{0} Pegs outlived of total {1} Pegs.", b.AvailablePegs.Count, totalPegs));
@@ -908,7 +916,7 @@ public class PegJumping
                 }
 
             }
-            findAvailablePegs(b, board);
+            UpdateAvailablePegs(b, board);
 
             if (watch.ElapsedMilliseconds >= 14000)
             {
@@ -921,7 +929,8 @@ public class PegJumping
         Console.Error.WriteLine(string.Format("{0} Pegs outlived of total {1} Pegs.", b.AvailablePegs.Count, totalPegs));
         return ConvertMovesToStringArray(b);
     }
-
+    #endregion
+    
     private string ReplaceAt(string input, int index, char newChar)
     {
         char[] chars = input.ToCharArray();
